@@ -22,9 +22,12 @@ install:
 - pwd
 jobs:
   include:
-  - stage: dpdkbuild
+  - stage: dpdk-build
     script:
     - ssh root@115.182.224.11 -o stricthostkeychecking=no 'rm -rf dpvs && git clone https://github.com/cxd0513/dpvs.git && cd dpvs && chmod +x build.sh && . ./build.sh '
+   - stage: dpvs-build
+    script:
+    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' cd dpvs && make -j40 && make install && cp bin/dpvs /usr/bin '
 before_install:
 - openssl aes-256-cbc -K $encrypted_784862453097_key -iv $encrypted_784862453097_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
