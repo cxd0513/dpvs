@@ -22,7 +22,7 @@ install:
 - pwd
 jobs:
   include:
-  - stage: dpdk-build
+  - stage: dpdkbuild
     script:
     - ssh root@115.182.224.11 -o stricthostkeychecking=no 'rm -rf dpvs && git clone https://github.com/cxd0513/dpvs.git && cd dpvs && chmod +x build.sh && . ./build.sh '
    - stage: dpvs-build
