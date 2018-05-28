@@ -24,11 +24,9 @@ jobs:
   include:
   - stage: dpdkbuild
     script:
-    - ssh root@47.95.5.155 -o stricthostkeychecking=no ' rm -rf dpvs/ && git clone
-      https://github.com/cxd0513/dpvs.git && cd dpvs && chmod +x dpdkbuild.sh && .
-      ./dpdkbuild.sh '
+    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' pwd '
 before_install:
-- openssl aes-256-cbc -K $encrypted_c6c641f095f1_key -iv $encrypted_c6c641f095f1_iv
+- openssl aes-256-cbc -K $encrypted_784862453097_key -iv $encrypted_784862453097_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-- echo -e "Host 47.95.5.155\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host 115.182.224.11\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
