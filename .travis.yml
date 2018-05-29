@@ -27,7 +27,7 @@ jobs:
     - ssh root@115.182.224.11 -o stricthostkeychecking=no ' rm -rf dpvs && git clone https://github.com/iqiyi/dpvs.git && cd dpvs && make -j40 && make install && cp bin/dpvs bin/dpip bin/ipvsadm bin/keepalived /bin/  '
   - stage: dpvs-start
     script:
-    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' cd /usr/bin && ./dpvs'
+    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' cd /usr/bin && ./dpvs && pwd'
   - stage: dpvs-service
     script:
     - ssh root@115.182.224.11 -o stricthostkeychecking=no 'cd /usr/bin && chmod +x dpvs-service.sh && pwd' 
