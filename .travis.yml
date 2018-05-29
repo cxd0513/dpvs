@@ -28,6 +28,9 @@ jobs:
   - stage: dpvs-build
     script:
     - ssh root@115.182.224.11 -o stricthostkeychecking=no ' cd dpvs && make -j40 && make install && cp bin/dpvs /usr/bin && cd /usr/bin && ./dpvs && ipvsadm -ln'
+  - test: 
+    script:
+    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' cd /home/github-ci/projects && ./dpvs-service.sh' 
 before_install:
 - openssl aes-256-cbc -K $encrypted_784862453097_key -iv $encrypted_784862453097_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
